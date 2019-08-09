@@ -48,7 +48,8 @@ export default class Api {
             },
             method: "GET",
         })
-            .then((res) => {res.json().data.attributes})
+            .then((res) => res.json())
+            .then((res) => res.data)
             .catch((error) => console.error(error))
     }
 }

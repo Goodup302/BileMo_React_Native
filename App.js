@@ -1,6 +1,7 @@
 import Navigate from './src/Navigation/Navigate';
 import React from 'react';
 import {AppRegistry, Platform} from "react-native";
+import Settings from "./app.json";
 
 export default class App extends React.Component {
     render() {
@@ -11,8 +12,8 @@ export default class App extends React.Component {
 }
 
 if (Platform.OS === 'web') {
-    AppRegistry.registerComponent('App', () => App);
-    AppRegistry.runApplication('App', {
+    AppRegistry.registerComponent(Settings.name, () => App);
+    AppRegistry.runApplication(Settings.name, {
         rootTag: document.getElementById('root')
     });
 }

@@ -1,37 +1,31 @@
-export const API_LOGIN = {
-    username: "Bouygues Telecom-5d4c287914a99",
-    password: "admin"
-};
-
 export default class Api {
-    static token;
+    //static token;
     static BASE_URL = 'http://bilemo.goodup302.fr';
 
-    static tokenIsfind() {
-        if (!Api.token) {
-            return fetch(Api.BASE_URL+'/token', {
-                headers: {'Content-Type': 'application/json'},
-                method: "POST",
-                body: JSON.stringify(API_LOGIN)
-            })
-                .then((res) => res.json())
-                .then((res) =>
-                    Api.token = 'Bearer '+res.token
-                ).catch((error) => console.error(error))
-        } else {
-            return new Promise((resolve) => {
-                resolve(Api.token)
-            });
-        }
-    }
+    // static tokenIsfind() {
+    //     if (!Api.token) {
+    //         return fetch(Api.BASE_URL+'/token', {
+    //             headers: {'Content-Type': 'application/json'},
+    //             method: "POST",
+    //             body: JSON.stringify(API_LOGIN)
+    //         })
+    //             .then((res) => res.json())
+    //             .then((res) =>
+    //                 Api.token = 'Bearer '+res.token
+    //             ).catch((error) => console.error(error))
+    //     } else {
+    //         return new Promise((resolve) => {
+    //             resolve(Api.token)
+    //         });
+    //     }
+    // }
 
-    static getProductList(link = '/api/products?page=1') {
-        //console.log(link);
+    static getProductList(link = '/api/products') {
         return fetch(Api.BASE_URL+link, {
             headers: {
                 'Accept': 'application/vnd.api+json',
                 'Content-Type': 'application/json',
-                'Authorization': Api.token,
+                //'Authorization': Api.token,
             },
             method: "GET",
         })
@@ -44,7 +38,7 @@ export default class Api {
             headers: {
                 'Accept': 'application/vnd.api+json',
                 'Content-Type': 'application/json',
-                'Authorization': Api.token,
+                //'Authorization': Api.token,
             },
             method: "GET",
         })

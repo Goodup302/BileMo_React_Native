@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, ScrollView, Image, View} from 'react-native';
 import Color from "react-native-material-color";
-import AppStyles from "../Styles";
-import {COLOR_PRIMARY} from "../Styles";
+import AppStyles from "../../Styles/Styles";
+import {COLOR_PRIMARY} from "../../Styles/Colors";
 
 export default class ProductDetail extends React.PureComponent {
     render () {
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        //color: 'red',
     },
     notAvailable: {
         paddingTop: 10,

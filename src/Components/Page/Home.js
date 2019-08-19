@@ -11,26 +11,22 @@ export default class Home extends React.Component{
 
     constructor(props) {
         super(props);
-        Api.tokenIsfind().then(() => {
-            Api.getProductList().then((result) => {
-                this.setState({
-                    items: result.data,
-                    links: result.links
-                })
-            });
+        Api.getProductList().then((result) => {
+            this.setState({
+                items: result.data,
+                links: result.links
+            })
         });
     }
 
     loadMore = () => {
         if (this.state.links['next'] && !this.state.loading) {
             this.setState({loading: true});
-            Api.tokenIsfind().then(() => {
-                Api.getProductList(this.state.links['next']).then((res) => {
-                    this.setState({
-                        items: [ ...this.state.items, ...res.data],
-                        links: res.links,
-                        loading: false
-                    });
+            Api.getProductList(this.state.links['next']).then((res) => {
+                this.setState({
+                    items: [ ...this.state.items, ...res.data],
+                    links: res.links,
+                    loading: false
                 });
             });
         }
@@ -38,10 +34,8 @@ export default class Home extends React.Component{
 
     showDetails = (link) => {
         //this.setState({loading: true});
-        Api.tokenIsfind().then(() => {
-            Api.getSingleProduct(link).then((data) => {
-                this.props.navigation.navigate("ProductDetail", { data: data.attributes })
-            });
+        Api.getSingleProduct(link).then((data) => {
+            this.props.navigation.navigate("ProductDetail", { data: data.attributes })
         });
     };
 
